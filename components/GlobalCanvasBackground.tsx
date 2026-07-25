@@ -68,7 +68,7 @@ function CanvasLayer() {
             const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2) / maxDist;
             const wave = Math.sin(t * 0.5 - dist * 6);
             const pulse = Math.max(0, wave);
-            const alpha = 0.15 + pulse * 0.1;
+            const alpha = 0.18 + pulse * 0.12;
             const radius = 1 + pulse * 1.5;
 
             ctx.beginPath();

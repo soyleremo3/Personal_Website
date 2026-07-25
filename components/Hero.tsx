@@ -32,7 +32,7 @@ export default function Hero() {
 
   if (reducedMotion) {
     return (
-      <section className="bg-bg/70 text-text w-full">
+      <section className="bg-bg/25 text-text w-full">
         <div className="mx-auto max-w-5xl px-6 py-24">
           <h1 className="font-display text-4xl font-bold">Emrullah Soyler</h1>
           <p className="text-text-muted mt-3 max-w-md">
@@ -74,7 +74,7 @@ export default function Hero() {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={container}
-      className="w-full bg-bg/70 text-text"
+      className="w-full bg-bg/25 text-text"
     >
       <div className="mx-auto max-w-5xl px-6 py-24">
         <motion.h1

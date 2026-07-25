@@ -113,7 +113,7 @@ export default function PickACard() {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       id="kart"
-      className="relative bg-surface/70 text-text w-full scroll-mt-20"
+      className="relative bg-surface/25 text-text w-full scroll-mt-20"
     >
       <div className="pointer-events-none absolute inset-0 bg-black/12" />
       <div className="relative z-10 mx-auto max-w-5xl px-6 py-24">

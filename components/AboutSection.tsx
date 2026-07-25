@@ -13,7 +13,7 @@ export default function AboutSection() {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       id="hakkimda"
-      className="bg-surface/70 text-text w-full scroll-mt-20"
+      className="bg-surface/25 text-text w-full scroll-mt-20"
     >
       <div className="mx-auto max-w-5xl px-6 py-24">
         <h2 className="font-display text-3xl font-semibold mb-4">Hakkımda</h2>
