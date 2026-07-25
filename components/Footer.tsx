@@ -13,7 +13,7 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="bg-bg text-text w-full"
+      className="bg-bg/70 text-text w-full"
     >
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-20 text-center">
         <SocialLinks />

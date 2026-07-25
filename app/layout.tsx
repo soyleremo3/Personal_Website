@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import GlobalCanvasBackground from "@/components/GlobalCanvasBackground";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -36,6 +37,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="bg-signature min-h-full flex flex-col text-text font-body">
+        <GlobalCanvasBackground />
         {children}
       </body>
     </html>
