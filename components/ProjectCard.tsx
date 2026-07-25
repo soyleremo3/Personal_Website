@@ -1,9 +1,11 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 import type { Project } from "@/data/projects";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="bg-surface text-text rounded-lg p-6 flex flex-col gap-3">
+    <div className="relative bg-surface text-text rounded-lg p-6 flex flex-col gap-3">
+      <GlowingEffect glow={false} disabled={false} proximity={48} spread={25} />
       <div className="flex items-center justify-between gap-2">
         <h3 className="font-display text-lg font-semibold break-words">{project.name}</h3>
         <span className="font-mono text-xs text-accent shrink-0">{project.language}</span>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cardFacts, type CardFact } from "@/data/cardFacts";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 function Card({ tag, text, reducedMotion }: { tag: string; text: string; reducedMotion: boolean }) {
   const [open, setOpen] = useState(false);
@@ -22,8 +23,9 @@ function Card({ tag, text, reducedMotion }: { tag: string; text: string; reduced
       onClick={toggle}
       aria-pressed={open}
       aria-label={open ? text : `${tag} — kartı aç`}
-      className="relative h-40 w-full cursor-pointer border-0 bg-transparent p-0 text-left outline-none transition-transform duration-200 ease-out [perspective:1000px] hover:scale-[1.02] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+      className="relative h-40 w-full cursor-pointer rounded-lg border-0 bg-transparent p-0 text-left outline-none transition-transform duration-200 ease-out [perspective:1000px] hover:scale-[1.02] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
     >
+      <GlowingEffect glow={false} disabled={false} proximity={48} spread={25} />
       <motion.div
         className="relative h-full w-full rounded-lg [transform-style:preserve-3d]"
         animate={{ rotateY: open ? 180 : 0 }}
