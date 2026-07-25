@@ -19,13 +19,13 @@ const item = {
 };
 
 const PRIMARY_BTN_CLASS =
-  "bg-accent text-bg inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold outline-none transition-all duration-200 ease-out hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "bg-accent text-bg inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold outline-none transition-[opacity,transform] duration-200 ease-out hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const SECONDARY_BTN_CLASS =
-  "text-text border-text-muted inline-flex items-center gap-2 rounded-md border bg-transparent px-5 py-2.5 text-sm font-semibold outline-none transition-all duration-200 ease-out hover:border-accent hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "text-text border-text-muted inline-flex items-center gap-2 rounded-md border bg-transparent px-5 py-2.5 text-sm font-semibold outline-none transition-[color,border-color,transform] duration-200 ease-out hover:border-accent hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const BADGE_CLASS =
-  "text-text-muted mt-5 inline-flex w-fit items-center gap-1.5 rounded-sm text-xs outline-none transition-colors duration-200 ease-out hover:text-accent hover:underline focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "text-text-muted mt-5 inline-flex w-fit items-center gap-1.5 rounded-sm text-xs outline-none transition-[color,opacity] duration-200 ease-out hover:text-accent hover:underline active:opacity-70 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 export default function Hero() {
   const reducedMotion = useReducedMotion();

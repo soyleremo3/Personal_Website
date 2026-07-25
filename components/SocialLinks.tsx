@@ -26,7 +26,7 @@ export default function SocialLinks() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="text-text-muted inline-flex rounded-full p-2.5 outline-none transition-all duration-200 ease-out hover:bg-surface hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="text-text-muted inline-flex rounded-full p-2.5 outline-none transition-[color,background-color,transform] duration-200 ease-out hover:bg-surface hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
               <path d={path} />
