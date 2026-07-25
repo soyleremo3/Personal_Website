@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLanguage } from "@/components/LanguageProvider";
 import SocialLinks from "@/components/SocialLinks";
 
 const PARALLAX_FACTOR = 20;
@@ -33,6 +34,7 @@ const BADGE_CLASS =
 
 export default function Hero() {
   const reducedMotion = useReducedMotion();
+  const { t } = useLanguage();
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -58,13 +60,10 @@ export default function Hero() {
       <section className="bg-bg/25 text-text w-full">
         <div className="mx-auto max-w-5xl px-6 py-24">
           <h1 className="font-display text-4xl font-bold">Emrullah Soyler</h1>
-          <p className="text-text-muted mt-3 max-w-md">
-            Mostly building games and robots — always trying to make the next one
-            better than the last.
-          </p>
+          <p className="text-text-muted mt-3 max-w-md">{t("hero.tagline")}</p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href="#projects" className={PRIMARY_BTN_CLASS}>
-              View Projects
+              {t("hero.viewProjects")}
             </a>
             <a
               href="https://github.com/soyleremo3"
@@ -118,8 +117,7 @@ export default function Hero() {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-text-muted mt-3 max-w-md"
         >
-          Mostly building games and robots — always trying to make the next one
-          better than the last.
+          {t("hero.tagline")}
         </motion.p>
         <motion.div
           variants={item}
@@ -127,7 +125,7 @@ export default function Hero() {
           className="mt-8 flex flex-wrap items-center gap-4"
         >
           <a href="#projects" className={PRIMARY_BTN_CLASS}>
-            View Projects
+            {t("hero.viewProjects")}
           </a>
           <a
             href="https://github.com/soyleremo3"

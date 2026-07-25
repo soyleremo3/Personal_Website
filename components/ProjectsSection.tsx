@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLanguage } from "@/components/LanguageProvider";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
   const reduce = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -18,7 +20,7 @@ export default function ProjectsSection() {
       className="bg-bg/25 text-text w-full scroll-mt-20"
     >
       <div className="mx-auto max-w-5xl px-6 py-24">
-        <h2 className="font-display text-3xl font-semibold mb-8">Projects</h2>
+        <h2 className="font-display text-3xl font-semibold mb-8">{t("projects.title")}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />

@@ -40,8 +40,16 @@ export default function TechMarquee() {
   }
 
   return (
-    <div className="bg-surface/25 overflow-hidden py-3">
-      <div className="animate-[marquee_28s_linear_infinite] flex w-max gap-8 font-mono text-xs text-text-muted">
+    <div
+      className="bg-surface/25 overflow-hidden py-3"
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+      }}
+    >
+      <div className="animate-[marquee_28s_linear_infinite] flex w-max font-mono text-xs text-text-muted">
         <div className="flex gap-8 pr-8">
           {TECHS.map((tech) => (
             <TechItem key={tech} tech={tech} />
