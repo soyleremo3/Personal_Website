@@ -28,6 +28,15 @@
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .bg-signature {
   background-color: #0B0B0D;
   background-image:

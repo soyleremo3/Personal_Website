@@ -112,7 +112,8 @@ export default function PickACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="bg-surface text-text w-full"
+      id="kart"
+      className="bg-surface text-text w-full scroll-mt-20"
     >
       <div className="mx-auto max-w-5xl px-6 py-24">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-3">

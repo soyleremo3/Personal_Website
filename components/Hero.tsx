@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import SocialLinks from "@/components/SocialLinks";
+import HeroCanvasBackground from "@/components/HeroCanvasBackground";
 
 const container = {
   hidden: {},
@@ -74,9 +75,10 @@ export default function Hero() {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={container}
-      className="bg-bg text-text w-full"
+      className="relative w-full overflow-hidden bg-bg text-text"
     >
-      <div className="mx-auto max-w-5xl px-6 py-24">
+      <HeroCanvasBackground />
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-24">
         <motion.h1
           variants={item}
           transition={{ duration: 0.3, ease: "easeOut" }}
