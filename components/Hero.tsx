@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import SocialLinks from "@/components/SocialLinks";
+
+const PARALLAX_FACTOR = 20;
 
 const container = {
   hidden: {},
@@ -29,6 +32,25 @@ const BADGE_CLASS =
 
 export default function Hero() {
   const reducedMotion = useReducedMotion();
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const content = contentRef.current;
+    if (!content) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      content.style.transform = `translate3d(${-x * PARALLAX_FACTOR}px, ${-y * PARALLAX_FACTOR}px, 0)`;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      content.style.transform = "";
+    };
+  }, [reducedMotion]);
 
   if (reducedMotion) {
     return (
@@ -76,7 +98,10 @@ export default function Hero() {
       variants={container}
       className="w-full bg-bg/25 text-text"
     >
-      <div className="mx-auto max-w-5xl px-6 py-24">
+      <div
+        ref={contentRef}
+        className="mx-auto max-w-5xl px-6 py-24 will-change-transform"
+      >
         <motion.h1
           variants={item}
           transition={{ duration: 0.3, ease: "easeOut" }}
