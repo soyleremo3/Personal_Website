@@ -108,8 +108,8 @@ export default function PickACard() {
 
   return (
     <motion.section
-      initial={reducedMotion ? undefined : { opacity: 0, y: 12 }}
-      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className="bg-surface text-text w-full"
@@ -124,9 +124,9 @@ export default function PickACard() {
         <AnimatePresence>
           {showCelebration && (
             <motion.div
-              initial={reducedMotion ? undefined : { opacity: 0, y: -8 }}
+              initial={reducedMotion ? false : { opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
+              exit={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -8 }}
               transition={{ duration: reducedMotion ? 0 : 0.3, ease: "easeOut" }}
               className="mb-6 rounded-lg bg-accent/10 px-4 py-3 text-sm text-accent"
             >

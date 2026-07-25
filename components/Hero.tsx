@@ -23,22 +23,24 @@ export default function Hero() {
 
   return (
     <motion.section
-      initial={reduce ? undefined : "hidden"}
-      whileInView={reduce ? undefined : "show"}
+      initial={reduce ? false : "hidden"}
+      whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      variants={reduce ? undefined : container}
+      variants={container}
       className="bg-bg text-text w-full"
     >
       <div className="mx-auto max-w-5xl px-6 py-24">
         <motion.h1
-          variants={reduce ? undefined : item}
+          initial={reduce ? false : "hidden"}
+          variants={item}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="font-display text-4xl font-bold"
         >
           Emrullah Soyler
         </motion.h1>
         <motion.p
-          variants={reduce ? undefined : item}
+          initial={reduce ? false : "hidden"}
+          variants={item}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="text-text-muted mt-3 max-w-md"
         >
@@ -46,7 +48,8 @@ export default function Hero() {
           better than the last.
         </motion.p>
         <motion.div
-          variants={reduce ? undefined : item}
+          initial={reduce ? false : "hidden"}
+          variants={item}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="mt-8 flex flex-wrap items-center gap-4"
         >
@@ -66,7 +69,8 @@ export default function Hero() {
           </a>
         </motion.div>
         <motion.a
-          variants={reduce ? undefined : item}
+          initial={reduce ? false : "hidden"}
+          variants={item}
           transition={{ duration: 0.3, ease: "easeOut" }}
           href="https://www.youtube.com/@RealPickAndSee"
           target="_blank"

@@ -10,8 +10,8 @@ export default function ProjectsSection() {
 
   return (
     <motion.section
-      initial={reduce ? undefined : { opacity: 0, y: 12 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      initial={reduce ? false : { opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       id="projeler"
