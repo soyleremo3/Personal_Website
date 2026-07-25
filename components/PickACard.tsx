@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { cardFacts, type CardFact } from "@/data/cardFacts";
 
 function Card({ tag, text, reducedMotion }: { tag: string; text: string; reducedMotion: boolean }) {
@@ -22,7 +22,7 @@ function Card({ tag, text, reducedMotion }: { tag: string; text: string; reduced
       onClick={toggle}
       aria-pressed={open}
       aria-label={open ? text : `${tag} — kartı aç`}
-      className="relative h-40 w-full cursor-pointer border-0 bg-transparent p-0 text-left outline-none [perspective:1000px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+      className="relative h-40 w-full cursor-pointer border-0 bg-transparent p-0 text-left outline-none transition-transform duration-200 ease-out [perspective:1000px] hover:scale-[1.02] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
     >
       <motion.div
         className="relative h-full w-full rounded-lg [transform-style:preserve-3d]"
@@ -55,24 +55,24 @@ function Card({ tag, text, reducedMotion }: { tag: string; text: string; reduced
 }
 
 export default function PickACard() {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  const reducedMotion = !!useReducedMotion();
 
   return (
-    <section className="bg-surface text-text px-6 py-24">
-      <h2 className="font-display text-3xl font-semibold mb-8">Bir Kart Seç, Gör</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cardFacts.map((fact: CardFact) => (
-          <Card key={fact.id} tag={fact.tag} text={fact.text} reducedMotion={reducedMotion} />
-        ))}
+    <motion.section
+      initial={reducedMotion ? undefined : { opacity: 0, y: 12 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="bg-surface text-text w-full"
+    >
+      <div className="mx-auto max-w-5xl px-6 py-24">
+        <h2 className="font-display text-3xl font-semibold mb-8">Bir Kart Seç, Gör</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cardFacts.map((fact: CardFact) => (
+            <Card key={fact.id} tag={fact.tag} text={fact.text} reducedMotion={reducedMotion} />
+          ))}
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

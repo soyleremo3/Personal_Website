@@ -13,7 +13,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         href={project.repoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-accent text-sm inline-flex items-center gap-1 hover:underline"
+        className="text-accent text-sm inline-flex items-center gap-1 rounded-sm outline-none transition-opacity duration-200 ease-out hover:underline hover:opacity-80 active:opacity-60 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
       >
         Repo
         <ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" />
