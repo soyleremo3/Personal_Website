@@ -50,16 +50,13 @@ export default function TechMarquee() {
       }}
     >
       <div className="animate-[marquee_28s_linear_infinite] flex w-max font-mono text-xs text-text-muted">
-        <div className="flex gap-8 pr-8">
-          {TECHS.map((tech) => (
-            <TechItem key={tech} tech={tech} />
-          ))}
-        </div>
-        <div className="flex gap-8 pr-8" aria-hidden="true">
-          {TECHS.map((tech) => (
-            <TechItem key={tech} tech={tech} />
-          ))}
-        </div>
+        {Array.from({ length: 6 }, (_, copy) => (
+          <div key={copy} className="flex gap-8 pr-8" aria-hidden={copy > 0}>
+            {TECHS.map((tech) => (
+              <TechItem key={tech} tech={tech} />
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
