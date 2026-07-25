@@ -22,3 +22,12 @@
   --font-mono: var(--font-mono);
 }
 
+.bg-signature {
+  background-color: #0B0B0D;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232, 163, 61, 0.07), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+}
+
