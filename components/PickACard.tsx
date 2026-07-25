@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { cardFacts, type CardFact } from "@/data/cardFacts";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 function Card({
   tag,
@@ -91,7 +92,7 @@ function Card({
 }
 
 export default function PickACard() {
-  const reducedMotion = !!useReducedMotion();
+  const reducedMotion = useReducedMotion();
   const [openedCount, setOpenedCount] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
   const celebratedRef = useRef(false);
