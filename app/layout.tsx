@@ -52,6 +52,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="bg-signature min-h-full flex flex-col text-text font-body">
         <GlobalCanvasBackground />
