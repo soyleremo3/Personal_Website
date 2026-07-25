@@ -11,8 +11,7 @@ export default function AboutSection() {
   return (
     <motion.section
       initial={reduce ? false : { opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       id="about"
       className="bg-surface/25 text-text w-full scroll-mt-20"

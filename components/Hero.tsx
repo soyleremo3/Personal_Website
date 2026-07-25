@@ -96,8 +96,7 @@ export default function Hero() {
   return (
     <motion.section
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      animate="show"
       variants={container}
       className="w-full bg-bg/25 text-text"
     >

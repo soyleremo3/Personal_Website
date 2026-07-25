@@ -162,11 +162,24 @@ function CanvasLayer() {
       mouseRef.current = {};
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (touch) mouseRef.current = { x: touch.clientX, y: touch.clientY };
+    };
+
+    const handleTouchEnd = () => {
+      mouseRef.current = {};
+    };
+
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
     document.addEventListener("visibilitychange", handleVisibility);
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseout", handleMouseLeave);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener("touchcancel", handleTouchEnd);
 
     resize();
     animationFrameId = requestAnimationFrame(draw);
@@ -177,6 +190,10 @@ function CanvasLayer() {
       document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseout", handleMouseLeave);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchEnd);
     };
   }, []);
 
