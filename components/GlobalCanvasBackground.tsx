@@ -31,6 +31,7 @@ function CanvasLayer() {
     let cols = 0;
     let rows = 0;
     let points: MeshPoint[] = [];
+    let lineGradient: CanvasGradient | string = `rgba(${RGB}, 0.05)`;
     let animationFrameId = 0;
     let paused = false;
     const startTime = performance.now();
@@ -58,6 +59,11 @@ function CanvasLayer() {
       cols = Math.ceil(width / gridSize) + 1;
       rows = Math.ceil(height / gridSize) + 1;
       buildPoints();
+
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, "rgba(255, 122, 0, 0.5)");
+      gradient.addColorStop(1, "rgba(50, 205, 50, 0.5)");
+      lineGradient = gradient;
     };
 
     const updatePoints = () => {
@@ -93,7 +99,7 @@ function CanvasLayer() {
         updatePoints();
 
         const stride = rows + 1;
-        ctx.strokeStyle = `rgba(${RGB}, 0.05)`;
+        ctx.strokeStyle = lineGradient;
         ctx.lineWidth = 1;
         for (let i = 0; i <= cols; i++) {
           ctx.beginPath();

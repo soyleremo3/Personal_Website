@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import SocialLinks from "@/components/SocialLinks";
 
@@ -22,13 +23,13 @@ const item = {
 };
 
 const PRIMARY_BTN_CLASS =
-  "bg-accent text-bg inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold outline-none transition-[opacity,transform] duration-200 ease-out hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "bg-accent text-bg inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold outline-none transition-[opacity,transform] duration-200 ease-out hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const SECONDARY_BTN_CLASS =
-  "text-text border-text-muted inline-flex items-center gap-2 rounded-md border bg-transparent px-5 py-2.5 text-sm font-semibold outline-none transition-[color,border-color,transform] duration-200 ease-out hover:border-accent hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "text-text border-text-muted inline-flex items-center gap-2 rounded-md border bg-transparent px-5 py-3 text-sm font-semibold outline-none transition-[color,border-color,transform] duration-200 ease-out hover:border-accent hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const BADGE_CLASS =
-  "text-text-muted mt-5 inline-flex w-fit items-center gap-1.5 rounded-sm text-xs outline-none transition-[color,opacity] duration-200 ease-out hover:text-accent hover:underline active:opacity-70 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "text-text-muted mt-1.5 py-3.5 -mb-3.5 inline-flex w-fit items-center gap-1.5 rounded-sm text-xs outline-none transition-[color,opacity] duration-200 ease-out hover:text-accent hover:underline active:opacity-70 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 export default function Hero() {
   const reducedMotion = useReducedMotion();
@@ -62,8 +63,8 @@ export default function Hero() {
             better than the last.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#projeler" className={PRIMARY_BTN_CLASS}>
-              Projelerimi Gör
+            <a href="#projects" className={PRIMARY_BTN_CLASS}>
+              View Projects
             </a>
             <a
               href="https://github.com/soyleremo3"
@@ -84,6 +85,9 @@ export default function Hero() {
           </a>
           <div className="mt-6">
             <SocialLinks />
+          </div>
+          <div className="mt-10 flex justify-center">
+            <ChevronDown className="h-5 w-5 text-text-muted" aria-hidden="true" />
           </div>
         </div>
       </section>
@@ -122,8 +126,8 @@ export default function Hero() {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="mt-8 flex flex-wrap items-center gap-4"
         >
-          <a href="#projeler" className={PRIMARY_BTN_CLASS}>
-            Projelerimi Gör
+          <a href="#projects" className={PRIMARY_BTN_CLASS}>
+            View Projects
           </a>
           <a
             href="https://github.com/soyleremo3"
@@ -147,6 +151,18 @@ export default function Hero() {
         <div className="mt-6">
           <SocialLinks />
         </div>
+        <motion.div
+          variants={item}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="mt-10 flex justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="h-5 w-5 text-text-muted" aria-hidden="true" />
+          </motion.div>
+        </motion.div>
       </div>
     </motion.section>
   );

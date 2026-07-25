@@ -49,8 +49,8 @@ function Card({
       type="button"
       onClick={toggle}
       aria-pressed={open}
-      aria-label={open ? text : `${tag} — kartı aç`}
-      className="relative h-40 w-full min-h-[44px] min-w-[44px] cursor-pointer rounded-lg border-0 bg-transparent p-0 text-left outline-none transition-transform duration-200 ease-out [perspective:1000px] hover:scale-[1.02] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+      aria-label={open ? text : `${tag} — open card`}
+      className="relative h-40 w-full min-h-[44px] min-w-[44px] cursor-pointer rounded-lg border-0 bg-transparent p-0 text-left outline-none transition-transform duration-200 ease-out [perspective:1000px] hover:scale-[1.02] active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
     >
       <GlowingEffect glow={false} disabled={false} proximity={48} spread={25} />
       <motion.div
@@ -68,7 +68,7 @@ function Card({
           aria-hidden={!open}
           className="absolute inset-0 flex items-center justify-center rounded-lg bg-bg p-4 text-center [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]"
         >
-          <p className="text-sm text-text">{text}</p>
+          <p className="text-base text-text">{text}</p>
         </div>
       </motion.div>
       {flash && (
@@ -112,15 +112,15 @@ export default function PickACard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      id="kart"
+      id="pick-a-card"
       className="relative bg-surface/25 text-text w-full scroll-mt-20"
     >
       <div className="pointer-events-none absolute inset-0 bg-black/12" />
       <div className="relative z-10 mx-auto max-w-5xl px-6 py-24">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-          <h2 className="font-display text-3xl font-semibold">Bir Kart Seç, Gör</h2>
+          <h2 className="font-display text-3xl font-semibold">Pick a Card, See</h2>
           <span className="font-mono text-xs text-text-muted">
-            {openedCount}/{cardFacts.length} açıldı
+            {openedCount}/{cardFacts.length} opened
           </span>
         </div>
         <AnimatePresence>
@@ -132,7 +132,7 @@ export default function PickACard() {
               transition={{ duration: reducedMotion ? 0 : 0.3, ease: "easeOut" }}
               className="mb-6 rounded-lg bg-accent/10 px-4 py-3 text-sm text-accent"
             >
-              Hepsini buldun! ✨
+              You found them all! ✨
             </motion.div>
           )}
         </AnimatePresence>

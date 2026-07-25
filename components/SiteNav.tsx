@@ -1,10 +1,10 @@
 const NAV_LINK_CLASS =
-  "rounded-sm outline-none transition-colors duration-200 ease-out hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+  "inline-block rounded-sm py-3.5 -my-3.5 outline-none transition-colors duration-200 ease-out hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 const links = [
-  { href: "#kart", label: "Bir Kart Seç" },
-  { href: "#projeler", label: "Projeler" },
-  { href: "#hakkimda", label: "Hakkımda" },
+  { href: "#pick-a-card", label: "Pick a Card" },
+  { href: "#projects", label: "Projects" },
+  { href: "#about", label: "About" },
 ];
 
 export default function SiteNav() {

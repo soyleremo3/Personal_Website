@@ -12,11 +12,11 @@ export default function AboutSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      id="hakkimda"
+      id="about"
       className="bg-surface/25 text-text w-full scroll-mt-20"
     >
       <div className="mx-auto max-w-5xl px-6 py-24">
-        <h2 className="font-display text-3xl font-semibold mb-4">Hakkımda</h2>
+        <h2 className="font-display text-3xl font-semibold mb-4">About</h2>
         <p className="text-text-muted max-w-2xl">
           I&apos;m focused on Unity and C#, building games while working toward a
           long-term goal of becoming a software engineer and game developer.

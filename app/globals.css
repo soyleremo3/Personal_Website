@@ -46,3 +46,27 @@
   background-size: auto, 48px 48px, 48px 48px;
 }
 
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+html {
+  scrollbar-color: var(--color-accent) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: 9999px;
+  border: 2px solid var(--color-bg);
+}
+

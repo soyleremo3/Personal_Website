@@ -29,7 +29,7 @@ export default function TechMarquee() {
 
   if (reducedMotion) {
     return (
-      <div className="bg-surface border-y border-white/5 py-3">
+      <div className="bg-surface/25 py-3">
         <ul className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-2 px-6 font-mono text-xs text-text-muted">
           {TECHS.map((tech) => (
             <li key={tech}>{tech}</li>
@@ -40,7 +40,7 @@ export default function TechMarquee() {
   }
 
   return (
-    <div className="bg-surface border-y border-white/5 overflow-hidden py-3">
+    <div className="bg-surface/25 overflow-hidden py-3">
       <div className="animate-[marquee_28s_linear_infinite] flex w-max gap-8 font-mono text-xs text-text-muted">
         <div className="flex gap-8 pr-8">
           {TECHS.map((tech) => (

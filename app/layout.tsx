@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import GlobalCanvasBackground from "@/components/GlobalCanvasBackground";
 import "./globals.css";
@@ -23,7 +23,23 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Emrullah Soyler",
-  description: "Kişisel portföy — projeler ve bağlantılar",
+  description: "Personal portfolio — projects and links",
+  openGraph: {
+    title: "Emrullah Soyler",
+    description: "Personal portfolio — projects and links",
+    siteName: "Emrullah Soyler",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Emrullah Soyler",
+    description: "Personal portfolio — projects and links",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b0b0d",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

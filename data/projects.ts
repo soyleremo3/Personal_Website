@@ -9,19 +9,19 @@ export const projects: Project[] = [
   {
     name: "3D_Platform_Game",
     language: "C#",
-    description: "Unity ile geliştirilen 3D platform oyunu.",
+    description: "A 3D platformer built in Unity.",
     repoUrl: "https://github.com/soyleremo3/3D_Platform_Game",
   },
   {
     name: "Card_Game_2D",
     language: "C#",
-    description: "Unity ile geliştirilen 2D kart oyunu.",
+    description: "A 2D card game built in Unity.",
     repoUrl: "https://github.com/soyleremo3/Card_Game_2D",
   },
   {
     name: "Team_Sirius_2026",
     language: "Java",
-    description: "FRC robotik takımı — swerve-drive mekanizması kodu.",
+    description: "FRC robotics team — swerve-drive mechanism code.",
     repoUrl: "https://github.com/soyleremo3/Team_Sirius_2026",
   },
 ];
