@@ -7,6 +7,14 @@ const RGB = "232, 163, 61";
 const MOUSE_RADIUS = 180;
 const MOUSE_PUSH = 4;
 
+const ALPHA_STEPS = 24;
+const FILL_STYLES = Array.from(
+  { length: ALPHA_STEPS + 1 },
+  (_, i) => `rgba(${RGB}, ${(i / ALPHA_STEPS).toFixed(3)})`,
+);
+const fillStyleForAlpha = (alpha: number) =>
+  FILL_STYLES[Math.round(Math.min(1, Math.max(0, alpha)) * ALPHA_STEPS)];
+
 type MeshPoint = {
   originX: number;
   originY: number;
@@ -55,7 +63,7 @@ function CanvasLayer() {
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      gridSize = width < 640 ? 64 : 44;
+      gridSize = width < 640 ? 64 : width < 1920 ? 44 : width < 2600 ? 56 : 72;
       cols = Math.ceil(width / gridSize) + 1;
       rows = Math.ceil(height / gridSize) + 1;
       buildPoints();
@@ -133,7 +141,7 @@ function CanvasLayer() {
           const radius = 1 + pulse * 1.5 + p.force * 2;
 
           ctx.beginPath();
-          ctx.fillStyle = `rgba(${RGB}, ${alpha})`;
+          ctx.fillStyle = fillStyleForAlpha(alpha);
           ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
           ctx.fill();
         }

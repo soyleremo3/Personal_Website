@@ -51,6 +51,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = language;
   }, [language]);
 
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   const setLanguage = useCallback((next: Language) => {
     window.localStorage.setItem(STORAGE_KEY, next);
     window.dispatchEvent(new Event(CHANGE_EVENT));
