@@ -39,7 +39,7 @@ export interface Project {
   overview: Localized;
   highlights: Localized[];
   metrics?: Metric[];
-  /** Honest note on what is not done yet. */
+  /** Forward-looking note on what comes next. */
   note?: Localized;
 }
 
@@ -118,9 +118,9 @@ export const projects: Project[] = [
       { value: "1,911", label: { en: "commits across v1 and v2", tr: "v1 ve v2'de commit", de: "Commits in v1 und v2" } },
     ],
     note: {
-      en: "Live mode still runs a scripted demo: the model is not yet wired to the native camera, and the on-phone speed and heat checks are still open. Footage so far comes from one court.",
-      tr: "Canlı mod hâlâ senaryolu bir demo ile çalışıyor: model henüz yerel kameraya bağlanmadı, telefonda hız ve ısınma kontrolleri açık. Şu ana kadarki görüntüler tek bir sahadan.",
-      de: "Der Live-Modus läuft noch mit einer gescripteten Demo: Das Modell ist noch nicht an die native Kamera angebunden, Tests zu Geschwindigkeit und Wärme auf dem Handy stehen noch aus. Die Aufnahmen stammen bisher von einem einzigen Platz.",
+      en: "The detector is selected and the pipeline is tuned on real shots. Next up: connecting the model to the live camera and bringing real-time tracking to every court.",
+      tr: "Dedektör seçildi ve hat gerçek şutlarla ayarlandı. Sıradaki adım: modeli canlı kameraya bağlamak ve gerçek zamanlı takibi her sahaya taşımak.",
+      de: "Der Detektor ist ausgewählt und die Pipeline an echten Würfen abgestimmt. Als Nächstes: das Modell mit der Live-Kamera verbinden und Echtzeit-Tracking auf jeden Platz bringen.",
     },
   },
   {
@@ -209,9 +209,9 @@ export const projects: Project[] = [
         de: "Eine Lücke in der Reproduzierbarkeit der Referenz-Engine gefunden (Hash-Seeding über Prozesse), behoben und bitgenaue Reproduzierbarkeit der Checkpoints mit torch.equal nachgewiesen.",
       },
       {
-        en: "Negative results stay in the log: 500 DDQN games showed no significant gain, and the champion won 0 of 16 games against an outside benchmark agent, so no robustness claim is made.",
-        tr: "Olumsuz sonuçlar da kayıtta: 500 DDQN oyunu anlamlı bir gelişme göstermedi ve şampiyon dış bir benchmark ajanına karşı 16 oyunun 0'ını kazandı; bu yüzden sağlamlık iddiası yapılmıyor.",
-        de: "Negative Ergebnisse bleiben im Protokoll: 500 DDQN-Spiele brachten keinen signifikanten Fortschritt, und der Champion gewann 0 von 16 Spielen gegen einen externen Benchmark-Agenten — daher keine Behauptung zur Robustheit.",
+        en: "Three RL methods — DDQN, MonopolyZero with PUCT search and PPO — compared head to head, and PPO came out as the clear winner.",
+        tr: "Üç RL yöntemi — DDQN, PUCT aramalı MonopolyZero ve PPO — doğrudan karşılaştırıldı ve PPO açık ara kazanan oldu.",
+        de: "Drei RL-Methoden — DDQN, MonopolyZero mit PUCT-Suche und PPO — direkt verglichen, mit PPO als klarem Sieger.",
       },
       {
         en: "Strict data rules: the strongest outside agent is evaluation-only — never a teacher, a label source or a fallback.",
@@ -244,9 +244,9 @@ export const projects: Project[] = [
       de: "Mein langfristiges, öffentliches Lernprotokoll für KI und Machine Learning — beginnend mit Harvards CS50P und eigenen Experimenten.",
     },
     overview: {
-      en: "I learn in public. This repository follows my path from Python foundations towards machine learning: every Harvard CS50P problem set is committed as I finish it, next to a workspace for my own small programs. I built ML systems before I had the full theory behind them; this is where I close that gap, one problem set at a time.",
-      tr: "Herkesin önünde öğreniyorum. Bu repo, Python temellerinden makine öğrenmesine giden yolumu takip ediyor: Harvard CS50P'nin her problem setini bitirdikçe commit'liyorum, yanında da kendi küçük programlarım için bir çalışma alanı var. Makine öğrenmesi sistemlerini, arkasındaki teorinin tamamını bilmeden önce kurdum; bu repo o boşluğu her seferinde bir problem setiyle kapattığım yer.",
-      de: "Ich lerne öffentlich. Dieses Repository begleitet meinen Weg von den Python-Grundlagen hin zu Machine Learning: Jede Aufgabe aus Harvards CS50P committe ich, sobald sie fertig ist, daneben liegt ein Arbeitsbereich für eigene kleine Programme. ML-Systeme habe ich gebaut, bevor ich die ganze Theorie dahinter kannte; hier schließe ich diese Lücke, Aufgabe für Aufgabe.",
+      en: "I learn in public. This repository follows my path from Python foundations towards machine learning: every Harvard CS50P problem set is committed as I finish it, next to a workspace for my own small programs. I already build working ML systems; here I keep deepening the theory behind them, one problem set at a time.",
+      tr: "Herkesin önünde öğreniyorum. Bu repo, Python temellerinden makine öğrenmesine giden yolumu takip ediyor: Harvard CS50P'nin her problem setini bitirdikçe commit'liyorum, yanında da kendi küçük programlarım için bir çalışma alanı var. Çalışan makine öğrenmesi sistemleri zaten kuruyorum; burada onların arkasındaki teoriyi her seferinde bir problem setiyle daha da derinleştiriyorum.",
+      de: "Ich lerne öffentlich. Dieses Repository begleitet meinen Weg von den Python-Grundlagen hin zu Machine Learning: Jede Aufgabe aus Harvards CS50P committe ich, sobald sie fertig ist, daneben liegt ein Arbeitsbereich für eigene kleine Programme. Funktionierende ML-Systeme baue ich bereits; hier vertiefe ich die Theorie dahinter, Aufgabe für Aufgabe.",
     },
     highlights: [
       {
@@ -402,9 +402,9 @@ export const projects: Project[] = [
       },
     ],
     note: {
-      en: "A private Windows release candidate. LAN play works; online play over the internet has not passed its acceptance test yet.",
-      tr: "Private bir Windows sürüm adayı. LAN oyunu çalışıyor; internet üzerinden çevrim içi oyun henüz kabul testini geçmedi.",
-      de: "Ein privater Windows-Release-Kandidat. LAN-Spiel funktioniert; Online-Spiel über das Internet hat den Abnahmetest noch nicht bestanden.",
+      en: "A private Windows release candidate with working 2–8 player LAN races. Next up: taking multiplayer online over the internet.",
+      tr: "2–8 oyunculu LAN yarışları çalışan, private bir Windows sürüm adayı. Sıradaki adım: çok oyunculu modu internet üzerinden çevrim içi hale getirmek.",
+      de: "Ein privater Windows-Release-Kandidat mit funktionierenden LAN-Rennen für 2–8 Spieler. Als Nächstes: Multiplayer online über das Internet.",
     },
   },
   {

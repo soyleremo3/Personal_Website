@@ -22,8 +22,8 @@ export const dictionary = {
   },
   "hero.role": {
     en: "AI & software developer",
-    tr: "Yapay zeka ve yazılım geliştirici",
-    de: "KI- und Softwareentwickler",
+    tr: "Yapay zeka & yazılım geliştirici",
+    de: "KI- & Softwareentwickler",
   },
   "hero.statement": {
     en: "I build machine-learning systems and the software around them — from a shot tracker that sees a basketball through a phone camera to agents that learn games they have never seen.",
@@ -60,11 +60,11 @@ export const dictionary = {
   "projects.featured": { en: "Featured", tr: "Öne çıkan", de: "Ausgewählt" },
   "projects.showing": { en: "projects", tr: "proje", de: "Projekte" },
 
-  "cat.ai": { en: "AI & ML", tr: "Yapay zeka ve ML", de: "KI & ML" },
+  "cat.ai": { en: "AI & ML", tr: "Yapay zeka & ML", de: "KI & ML" },
   "cat.mobile": { en: "Mobile", tr: "Mobil", de: "Mobil" },
   "cat.web": { en: "Web", tr: "Web", de: "Web" },
   "cat.games": { en: "Games", tr: "Oyunlar", de: "Spiele" },
-  "cat.tools": { en: "Desktop & tools", tr: "Masaüstü ve araçlar", de: "Desktop & Tools" },
+  "cat.tools": { en: "Desktop & tools", tr: "Masaüstü & araçlar", de: "Desktop & Tools" },
   "cat.robotics": { en: "Robotics", tr: "Robotik", de: "Robotik" },
 
   "status.active": { en: "In development", tr: "Geliştiriliyor", de: "In Entwicklung" },
@@ -182,7 +182,7 @@ export const dictionary = {
     tr: "Kaynak kod gizli. Bir görüşmede veya aramada üzerinden memnuniyetle geçebilirim.",
     de: "Der Quellcode ist privat. Gern zeige ich ihn in einem Gespräch oder Call.",
   },
-  "detail.honest": { en: "Where it stands", tr: "Şu anki durum", de: "Aktueller Stand" },
+  "detail.honest": { en: "What's next", tr: "Sıradaki adım", de: "Nächster Schritt" },
   "detail.next": { en: "Next project", tr: "Sonraki proje", de: "Nächstes Projekt" },
   "detail.prev": { en: "Previous project", tr: "Önceki proje", de: "Vorheriges Projekt" },
 

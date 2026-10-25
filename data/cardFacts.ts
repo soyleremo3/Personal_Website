@@ -30,9 +30,9 @@ export const cardFacts: CardFact[] = [
     id: 3,
     rank: "3",
     text: {
-      en: "My Monopoly agent's worst result sits right next to its best: it won 0 of 16 against an outside benchmark.",
-      tr: "Monopoly ajanımın en kötü sonucu en iyisinin hemen yanında duruyor: dış bir benchmark'a karşı 16 oyunun 0'ını kazandı.",
-      de: "Das schlechteste Ergebnis meines Monopoly-Agenten steht direkt neben dem besten: 0 von 16 Spielen gegen einen externen Benchmark gewonnen.",
+      en: "I trained a Monopoly champion from scratch: my 80-game PPO agent beat every opponent family it faced — 32, 64 and 128 games.",
+      tr: "Sıfırdan bir Monopoly şampiyonu eğittim: 80 oyunluk PPO ajanım karşılaştığı tüm rakip ailelerini yendi — 32, 64 ve 128 oyunluk.",
+      de: "Ich habe einen Monopoly-Champion von Grund auf trainiert: Mein 80-Spiele-PPO-Agent schlug jede Gegnerfamilie — 32, 64 und 128 Spiele.",
     },
   },
   {
@@ -57,9 +57,9 @@ export const cardFacts: CardFact[] = [
     id: 6,
     rank: "6",
     text: {
-      en: "I don't have a dedicated GPU. Heavy training runs on free Google Colab, and my video upscaler runs on integrated graphics.",
-      tr: "Harici bir ekran kartım yok. Ağır eğitimler ücretsiz Google Colab'de çalışıyor, video büyütücüm de entegre grafikte.",
-      de: "Ich habe keine dedizierte GPU. Aufwendiges Training läuft auf dem kostenlosen Google Colab, mein Video-Upscaler auf integrierter Grafik.",
+      en: "I get big results from lean hardware: I train detection models on Google Colab and built a video upscaler that takes 360p to 1080p on a laptop.",
+      tr: "Sade donanımdan büyük sonuçlar çıkarırım: tespit modellerimi Google Colab'de eğitiyorum ve bir dizüstünde 360p'yi 1080p'ye çıkaran bir video büyütücü geliştirdim.",
+      de: "Ich hole viel aus schlanker Hardware heraus: Erkennungsmodelle trainiere ich auf Google Colab, und ich habe einen Video-Upscaler gebaut, der auf einem Laptop 360p auf 1080p bringt.",
     },
   },
 ];

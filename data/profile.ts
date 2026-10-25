@@ -192,7 +192,7 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: { en: "AI & machine learning", tr: "Yapay zeka ve makine öğrenmesi", de: "KI & Machine Learning" },
+    title: { en: "AI & machine learning", tr: "Yapay zeka & makine öğrenmesi", de: "KI & Machine Learning" },
     items: [
       "Python",
       "PyTorch",
@@ -205,7 +205,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: { en: "Mobile & web", tr: "Mobil ve web", de: "Mobil & Web" },
+    title: { en: "Mobile & web", tr: "Mobil & web", de: "Mobil & Web" },
     items: [
       "TypeScript",
       "React Native & Expo",
@@ -218,7 +218,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: { en: "Games & systems", tr: "Oyun ve sistem", de: "Spiele & Systeme" },
+    title: { en: "Games & systems", tr: "Oyun & sistem", de: "Spiele & Systeme" },
     items: ["Unity", "C#", "C++20 & Win32", "Java & WPILib", "PySide6", "FFmpeg"],
   },
   {
