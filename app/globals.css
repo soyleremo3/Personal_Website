@@ -12,6 +12,22 @@
   --color-signal: #6cc9b0;
 }
 
+/* Archivo draws "&" as a stylised glyph; take only that character from a standard sans. */
+@font-face {
+  font-family: "Amp";
+  src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Roboto"), local("Segoe UI");
+  font-weight: 100 549;
+  unicode-range: U+0026;
+}
+
+@font-face {
+  font-family: "Amp";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Helvetica-Bold"),
+    local("Roboto Bold"), local("Roboto-Bold"), local("Segoe UI Bold");
+  font-weight: 550 900;
+  unicode-range: U+0026;
+}
+
 @theme inline {
   --color-bg: var(--color-bg);
   --color-surface: var(--color-surface);
@@ -23,8 +39,8 @@
   --color-accent-static: var(--color-accent-static);
   --color-signal: var(--color-signal);
 
-  --font-display: var(--font-archivo);
-  --font-body: var(--font-archivo);
+  --font-display: "Amp", var(--font-archivo);
+  --font-body: "Amp", var(--font-archivo);
   --font-mono: var(--font-mono);
 }
 
@@ -48,14 +64,14 @@ body {
 
 /* Wide, heavy display cut of Archivo — the scoreboard voice of the site. */
 .display-wide {
-  font-family: var(--font-archivo);
+  font-family: "Amp", var(--font-archivo);
   font-stretch: 118%;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
 .display-tight {
-  font-family: var(--font-archivo);
+  font-family: "Amp", var(--font-archivo);
   font-stretch: 100%;
   font-weight: 700;
   letter-spacing: -0.015em;
