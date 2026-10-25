@@ -1,25 +1,43 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useLanguage } from "@/components/LanguageProvider";
+import { orderedProjects, totalCommits } from "@/data/projects";
+import { CONTAINER, SECTION } from "@/components/ui/styles";
 
 export default function AboutSection() {
-  const reduce = useReducedMotion();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const commits = (Math.floor(totalCommits / 100) * 100).toLocaleString(language);
+
+  const facts = [
+    { label: t("about.based"), value: t("about.basedValue") },
+    { label: t("about.education"), value: t("about.educationValue") },
+    { label: t("about.languages"), value: t("about.languagesValue") },
+    {
+      label: t("about.numbers"),
+      value: t("about.numbersValue", { projects: orderedProjects.length, commits }),
+    },
+  ];
 
   return (
-    <motion.section
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      id="about"
-      className="bg-surface/25 text-text w-full scroll-mt-20"
-    >
-      <div className="mx-auto max-w-5xl px-6 py-24">
-        <h2 className="font-display text-3xl font-semibold mb-4">{t("about.title")}</h2>
-        <p className="text-text-muted max-w-2xl">{t("about.bio")}</p>
+    <section id="about" aria-labelledby="about-title" className={`${SECTION} py-20 md:py-28`}>
+      <div className={`${CONTAINER} grid gap-12 lg:grid-cols-[1fr_minmax(0,22rem)]`}>
+        <div className="max-w-2xl">
+          <h2 id="about-title" className="display-wide text-3xl text-text sm:text-4xl">
+            {t("about.title")}
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-text">{t("about.bio1")}</p>
+          <p className="mt-5 leading-relaxed text-text-muted">{t("about.bio2")}</p>
+        </div>
+
+        <dl className="self-start rounded-2xl border border-line bg-surface/70">
+          {facts.map((fact) => (
+            <div key={fact.label} className="border-b border-line px-6 py-4 last:border-0">
+              <dt className="text-xs text-text-muted">{fact.label}</dt>
+              <dd className="mt-1 text-sm text-text">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-    </motion.section>
+    </section>
   );
 }

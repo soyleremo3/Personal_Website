@@ -1,19 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/components/LanguageProvider";
-import type { DictionaryKey, Language } from "@/lib/dictionary";
-
-const NAV_LINK_CLASS =
-  "inline-block rounded-sm py-3.5 -my-3.5 outline-none transition-colors duration-200 ease-out hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+import { LANGUAGES, type DictionaryKey } from "@/lib/dictionary";
+import { FOCUS_RING } from "@/components/ui/styles";
 
 const links: { href: string; key: DictionaryKey }[] = [
-  { href: "#pick-a-card", key: "nav.pickACard" },
-  { href: "#projects", key: "nav.projects" },
-  { href: "#about", key: "nav.about" },
+  { href: "/#work", key: "nav.work" },
+  { href: "/#projects", key: "nav.projects" },
+  { href: "/#experience", key: "nav.experience" },
+  { href: "/#about", key: "nav.about" },
+  { href: "/#contact", key: "nav.contact" },
 ];
-
-const LANGUAGES: Language[] = ["en", "tr"];
 
 function LanguageToggle() {
   const { language, setLanguage, t } = useLanguage();
@@ -22,7 +23,7 @@ function LanguageToggle() {
     <div
       role="group"
       aria-label={t("nav.languageLabel")}
-      className="flex items-center gap-0.5 rounded-full border border-white/10 bg-surface/40 p-0.5 font-mono text-xs"
+      className="flex items-center gap-0.5 rounded-full border border-line bg-surface/60 p-0.5 text-xs font-semibold"
     >
       {LANGUAGES.map((lng) => (
         <button
@@ -30,14 +31,14 @@ function LanguageToggle() {
           type="button"
           onClick={() => setLanguage(lng)}
           aria-pressed={language === lng}
+          lang={lng}
           className={cn(
-            "rounded-full px-2.5 py-1 uppercase tracking-wide outline-none transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
-            language === lng
-              ? "bg-accent text-bg"
-              : "text-text-muted hover:text-accent",
+            "min-h-8 min-w-9 rounded-full px-2.5 uppercase transition-colors duration-200 ease-out",
+            FOCUS_RING,
+            language === lng ? "bg-accent text-bg" : "text-text-muted hover:text-text",
           )}
         >
-          {lng.toUpperCase()}
+          {lng}
         </button>
       ))}
     </div>
@@ -46,26 +47,84 @@ function LanguageToggle() {
 
 export default function SiteNav() {
   const { t } = useLanguage();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-bg/60 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-5xl items-center justify-center gap-4 px-4 py-3 sm:justify-between sm:gap-6 sm:px-6 sm:py-4">
-        <span className="font-display hidden text-sm font-semibold text-text sm:inline">
-          Emrullah Soyler
-        </span>
-        <div className="flex items-center gap-4 sm:gap-6">
-          <ul className="flex items-center gap-4 text-xs text-text-muted sm:gap-6 sm:text-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-line bg-bg/75 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <Link
+          href="/"
+          className={cn("flex items-center gap-2.5 rounded-sm", FOCUS_RING)}
+          onClick={() => setOpen(false)}
+        >
+          <span
+            aria-hidden="true"
+            className="display-wide grid h-8 w-8 place-items-center rounded-md bg-accent text-[13px] text-bg"
+          >
+            ES
+          </span>
+          <span className="display-tight text-sm text-text">Emrullah Söyler</span>
+        </Link>
+
+        <div className="flex items-center gap-3 sm:gap-6">
+          <ul className="hidden items-center gap-6 text-sm text-text-muted md:flex">
             {links.map(({ href, key }) => (
               <li key={href}>
-                <a href={href} className={NAV_LINK_CLASS}>
+                <Link
+                  href={href}
+                  className={cn("rounded-sm py-2 transition-colors duration-200 hover:text-text", FOCUS_RING)}
+                >
                   {t(key)}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
           <LanguageToggle />
+          <button
+            type="button"
+            className={cn(
+              "grid h-10 w-10 place-items-center rounded-md border border-line text-text md:hidden",
+              FOCUS_RING,
+            )}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </button>
         </div>
       </nav>
+
+      {open && (
+        <div id="mobile-menu" className="border-t border-line bg-bg/95 md:hidden">
+          <ul className="mx-auto flex max-w-6xl flex-col px-4 py-2">
+            {links.map(({ href, key }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "display-tight block rounded-sm border-b border-line py-4 text-lg text-text last:border-0",
+                    FOCUS_RING,
+                  )}
+                >
+                  {t(key)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

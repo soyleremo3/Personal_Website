@@ -1,166 +1,90 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
-import SocialLinks from "@/components/SocialLinks";
+import { labLog } from "@/data/profile";
+import { BUTTON_PRIMARY, BUTTON_SECONDARY } from "@/components/ui/styles";
 
-const PARALLAX_FACTOR = 20;
-
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.13,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0 },
-};
-
-const PRIMARY_BTN_CLASS =
-  "bg-accent text-bg inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold outline-none transition-[opacity,transform] duration-200 ease-out hover:opacity-90 active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
-const SECONDARY_BTN_CLASS =
-  "text-text border-text-muted inline-flex items-center gap-2 rounded-md border bg-transparent px-5 py-3 text-sm font-semibold outline-none transition-[color,border-color,transform] duration-200 ease-out hover:border-accent hover:text-accent active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
-
-const BADGE_CLASS =
-  "text-text-muted mt-1.5 py-3.5 -mb-3.5 inline-flex w-fit items-center gap-1.5 rounded-sm text-xs outline-none transition-[color,opacity] duration-200 ease-out hover:text-accent hover:underline active:opacity-70 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
+function formatLogDate(date: string, language: string) {
+  return new Intl.DateTimeFormat(language, { day: "numeric", month: "short", year: "numeric" }).format(
+    new Date(`${date}T12:00:00`),
+  );
+}
 
 export default function Hero() {
-  const reducedMotion = useReducedMotion();
-  const { t } = useLanguage();
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (reducedMotion) return;
-    const content = contentRef.current;
-    if (!content) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-      content.style.transform = `translate3d(${-x * PARALLAX_FACTOR}px, ${-y * PARALLAX_FACTOR}px, 0)`;
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      content.style.transform = "";
-    };
-  }, [reducedMotion]);
-
-  if (reducedMotion) {
-    return (
-      <section className="bg-bg/25 text-text w-full">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <h1 className="font-display text-4xl font-bold">Emrullah Soyler</h1>
-          <p className="text-text-muted mt-3 max-w-md">{t("hero.tagline")}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#projects" className={PRIMARY_BTN_CLASS}>
-              {t("hero.viewProjects")}
-            </a>
-            <a
-              href="https://github.com/soyleremo3"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={SECONDARY_BTN_CLASS}
-            >
-              GitHub
-            </a>
-          </div>
-          <a
-            href="https://www.youtube.com/@RealPickAndSee"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={BADGE_CLASS}
-          >
-            🎬 YouTube: Pick&amp;See
-          </a>
-          <div className="mt-6">
-            <SocialLinks />
-          </div>
-          <div className="mt-10 flex justify-center">
-            <ChevronDown className="h-5 w-5 text-text-muted" aria-hidden="true" />
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const { language, t, l } = useLanguage();
 
   return (
-    <motion.section
-      initial="hidden"
-      animate="show"
-      variants={container}
-      className="w-full bg-bg/25 text-text"
-    >
-      <div
-        ref={contentRef}
-        className="mx-auto max-w-5xl px-6 py-24 will-change-transform"
-      >
-        <motion.h1
-          variants={item}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="font-display text-4xl font-bold"
-        >
-          Emrullah Soyler
-        </motion.h1>
-        <motion.p
-          variants={item}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-text-muted mt-3 max-w-md"
-        >
-          {t("hero.tagline")}
-        </motion.p>
-        <motion.div
-          variants={item}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="mt-8 flex flex-wrap items-center gap-4"
-        >
-          <a href="#projects" className={PRIMARY_BTN_CLASS}>
-            {t("hero.viewProjects")}
-          </a>
-          <a
-            href="https://github.com/soyleremo3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={SECONDARY_BTN_CLASS}
+    <section aria-labelledby="hero-title" className="w-full bg-bg/25">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-16 sm:px-6 md:pt-24 lg:grid-cols-[1.25fr_1fr] lg:items-end lg:gap-16">
+        <div>
+          <p className="rise flex items-center gap-2.5 text-sm text-text-muted">
+            <span
+              aria-hidden="true"
+              className="h-2 w-2 rounded-full bg-signal motion-safe:animate-[pulse-dot_2.4s_ease-in-out_infinite]"
+            />
+            {t("hero.available")}
+          </p>
+
+          <h1
+            style={{ animationDelay: "0.05s" }}
+            id="hero-title"
+            className="rise display-wide mt-6 text-[clamp(2.6rem,8vw,5.5rem)] leading-[0.95] text-text"
           >
-            GitHub
-          </a>
-        </motion.div>
-        <motion.a
-          variants={item}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          href="https://www.youtube.com/@RealPickAndSee"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={BADGE_CLASS}
-        >
-          🎬 YouTube: Pick&amp;See
-        </motion.a>
-        <div className="mt-6">
-          <SocialLinks />
+            Emrullah
+            <br />
+            Söyler
+          </h1>
+
+          <p style={{ animationDelay: "0.12s" }} className="rise display-tight mt-6 text-xl text-accent sm:text-2xl">
+            {t("hero.role")}
+          </p>
+
+          <p style={{ animationDelay: "0.18s" }} className="rise mt-4 max-w-xl text-base leading-relaxed text-text-muted sm:text-lg">
+            {t("hero.statement")}
+          </p>
+
+          <div style={{ animationDelay: "0.24s" }} className="rise mt-9 flex flex-wrap items-center gap-3">
+            <Link href="/#work" className={BUTTON_PRIMARY}>
+              {t("hero.ctaWork")}
+            </Link>
+            <Link href="/#contact" className={BUTTON_SECONDARY}>
+              {t("hero.ctaContact")}
+            </Link>
+          </div>
         </div>
-        <motion.div
-          variants={item}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="mt-10 flex justify-center"
+
+        <aside
+          style={{ animationDelay: "0.3s" }}
+          aria-labelledby="lab-log-title"
+          className="rise rounded-xl border border-line bg-surface/80 backdrop-blur-sm"
         >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown className="h-5 w-5 text-text-muted" aria-hidden="true" />
-          </motion.div>
-        </motion.div>
+          <div className="flex items-baseline justify-between gap-4 border-b border-line px-5 py-4">
+            <h2 id="lab-log-title" className="display-tight text-base text-text">
+              {t("hero.logTitle")}
+            </h2>
+            <p className="text-xs text-text-muted">{t("hero.logNote")}</p>
+          </div>
+          <ol className="divide-y divide-line">
+            {labLog.map((entry) => (
+              <li key={`${entry.date}-${entry.slug}`}>
+                <Link
+                  href={`/projects/${entry.slug}`}
+                  className="group block px-5 py-3.5 outline-none transition-colors duration-200 hover:bg-raised/60 focus-visible:bg-raised focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+                >
+                  <div className="flex items-baseline justify-between gap-3 text-xs">
+                    <span className="font-semibold text-accent">{entry.project}</span>
+                    <time dateTime={entry.date} className="tabular shrink-0 font-mono text-text-muted">
+                      {formatLogDate(entry.date, language)}
+                    </time>
+                  </div>
+                  <p className="mt-1 text-sm leading-snug text-text/90 group-hover:text-text">{l(entry.text)}</p>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </aside>
       </div>
-    </motion.section>
+    </section>
   );
 }

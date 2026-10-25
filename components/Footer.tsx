@@ -1,23 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
 import SocialLinks from "@/components/SocialLinks";
+import { CONTAINER, TEXT_LINK } from "@/components/ui/styles";
 
 export default function Footer() {
-  const reduce = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
-    <motion.footer
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="bg-bg/25 text-text w-full"
-    >
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-20 text-center">
-        <SocialLinks />
-        <p className="text-text-muted text-sm">© {new Date().getFullYear()} Emrullah Soyler</p>
+    <footer className="w-full border-t border-line bg-bg/80">
+      <div className={`${CONTAINER} flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between`}>
+        <div>
+          <p className="display-tight text-text">Emrullah Söyler</p>
+          <p className="mt-1 text-sm text-text-muted">{t("footer.built")}</p>
+        </div>
+        <div className="flex items-center gap-4">
+          <SocialLinks />
+          <Link href="/#main" className={`${TEXT_LINK} text-sm`}>
+            {t("footer.top")}
+          </Link>
+        </div>
       </div>
-    </motion.footer>
+      <p className={`${CONTAINER} pb-8 text-xs text-text-muted/70`}>© {new Date().getFullYear()} Emrullah Söyler</p>
+    </footer>
   );
 }

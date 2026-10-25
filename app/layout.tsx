@@ -1,40 +1,59 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import GlobalCanvasBackground from "@/components/GlobalCanvasBackground";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import SiteNav from "@/components/SiteNav";
+import Footer from "@/components/Footer";
+import { FULL_NAME, SITE_URL } from "@/data/profile";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-});
-
-const inter = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["500"],
 });
 
+const DESCRIPTION =
+  "Emrullah Söyler — AI & software developer from Türkiye. Computer vision, reinforcement learning and LLM agents, plus mobile apps, games and FRC robotics.";
+
 export const metadata: Metadata = {
-  title: "Emrullah Soyler",
-  description: "Personal portfolio — projects and links",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${FULL_NAME} — AI & software developer`,
+    template: `%s · ${FULL_NAME}`,
+  },
+  description: DESCRIPTION,
+  authors: [{ name: FULL_NAME, url: SITE_URL }],
+  keywords: [
+    "Emrullah Söyler",
+    "Emrullah Soyler",
+    "AI developer",
+    "machine learning",
+    "computer vision",
+    "reinforcement learning",
+    "React Native",
+    "Unity",
+    "FRC",
+    "portfolio",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Emrullah Soyler",
-    description: "Personal portfolio — projects and links",
-    siteName: "Emrullah Soyler",
+    title: `${FULL_NAME} — AI & software developer`,
+    description: DESCRIPTION,
+    siteName: FULL_NAME,
+    url: "/",
     type: "website",
   },
   twitter: {
-    card: "summary",
-    title: "Emrullah Soyler",
-    description: "Personal portfolio — projects and links",
+    card: "summary_large_image",
+    title: `${FULL_NAME} — AI & software developer`,
+    description: DESCRIPTION,
   },
 };
 
@@ -51,12 +70,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="bg-signature min-h-full flex flex-col text-text font-body">
         <GlobalCanvasBackground />
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-bg"
+          >
+            Skip to content
+          </a>
+          <SiteNav />
+          <main id="main" className="flex flex-1 flex-col">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

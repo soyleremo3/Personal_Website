@@ -3,22 +3,28 @@
 :root {
   --color-bg: #0b0b0d;
   --color-surface: #16161a;
+  --color-raised: #1e1e23;
+  --color-line: rgba(237, 237, 230, 0.09);
   --color-text: #edede6;
   --color-text-muted: #85858c;
   --color-accent: #e8a33d;
   --color-accent-static: #c4453c;
+  --color-signal: #6cc9b0;
 }
 
 @theme inline {
   --color-bg: var(--color-bg);
   --color-surface: var(--color-surface);
+  --color-raised: var(--color-raised);
+  --color-line: var(--color-line);
   --color-text: var(--color-text);
   --color-text-muted: var(--color-text-muted);
   --color-accent: var(--color-accent);
   --color-accent-static: var(--color-accent-static);
+  --color-signal: var(--color-signal);
 
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-display: var(--font-archivo);
+  --font-body: var(--font-archivo);
   --font-mono: var(--font-mono);
 }
 
@@ -28,12 +34,67 @@
   }
 }
 
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-feature-settings: "ss01", "tnum" 0;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Wide, heavy display cut of Archivo — the scoreboard voice of the site. */
+.display-wide {
+  font-family: var(--font-archivo);
+  font-stretch: 118%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.display-tight {
+  font-family: var(--font-archivo);
+  font-stretch: 100%;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-16.6667%);
+  }
+}
+
+/* Hero entrance runs in CSS so the content is visible even before JavaScript loads. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
   }
 }
 
@@ -69,4 +130,3 @@ html {
   border-radius: 9999px;
   border: 2px solid var(--color-bg);
 }
-
